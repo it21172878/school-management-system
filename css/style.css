@@ -1,0 +1,28 @@
+.body-home {
+  background: url(../img/bg.jpeg);
+  background-size: cover;
+  background-attachment: fixed;
+}
+.black-fill {
+  background: rgba(0, 0, 0, 0.7);
+  min-height: 100vh;
+}
+#homeNav {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+.welcome-text {
+  min-height: 80vh;
+}
+.welcome-text img {
+  width: 400px;
+}
+.welcome-text h4 {
+  color: #eee;
+  font-size: 50px;
+}
+.welcome-text p {
+  color: #bbbbbb;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 5px;
+  border-radius: 4px;
+}
