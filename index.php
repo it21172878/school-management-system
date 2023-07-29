@@ -30,10 +30,10 @@
                                 <a class="nav-link active" aria-current="page" href="#">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">About</a>
+                                <a class="nav-link" href="#about">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Contact</a>
+                                <a class="nav-link" href="#contact">Contact</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav me-right mb-2 mb-lg-0">
@@ -46,8 +46,47 @@
             </nav>
             <selection class="welcome-text d-flex justify-content-center align-items-center flex-column">
                 <img src="logo.png">
-                <h4>Welcome to Hogwart</h4>
+                <h4>Welcome to Hogwart University</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis earum hic atque.</p>
+
+            </selection>
+            <selection id="about" class="d-flex justify-content-center align-items-center flex-column">
+                <div class="card mb-3 card-1">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="logo.png" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">About</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-body-secondary">Hogwart University</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </selection>
+
+            <selection id="contact" class="d-flex justify-content-center align-items-center flex-column">
+                <form>
+                    <div class="mb-30">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
 
             </selection>
         </div>
