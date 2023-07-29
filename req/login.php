@@ -38,19 +38,21 @@ if(isset($_POST['uname']) && isset($_POST['pass']) && isset($_POST['role'])){
         if($stmt->rowCount()==1){
             $user=$stmt->fetch();
             $username=$user['username'];
-            $password=$user['password'];
-            $fname=$user['fname'];
-            $id=$user['id'];
+            $password=$user['password'];            
 
 if($username===$uname){
     if(password_verify($pass,$password)){
-    $_SESSION['id']=$id;
-    $_SESSION['fname']=$fname;
-    $_SESSION['role']=$role;
-    
+   
+    $_SESSION['role']=$role;    
+    if($role=="Admin"){
+        $id=$user['admin_id'];
+        $_SESSION['admin_id']=$id;
+        header("Location: ../admin/index.php");
+        exit;
+    }
+
     // header("Location: ../home.php?error=$em");
-    header("Location: ../admin/index.php");
-    exit;
+    
 }else{
     $em="Incorrect Username or Password";
     header("Location: ../login.php?error=$em");
