@@ -41,22 +41,42 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Log In</button>
+                <a href="index.php" class="text-decoration-none">Home</a>
             </form>
-            <br /><br />
+            <!-- <br /><br /> -->
 
-            <div class="text-center text-light">
+            <!-- <div class="text-center text-light">
 
-                Copyright &copy; <?php
+                Copyright &copy; 
+                <?php
                     echo date("d.m.Y")." " .date("l").",";
                     ?>
                 Hogward School. All Rights Reserved.
 
-            </div>
+            </div> -->
         </div>
+
     </div>
+
+
+    <footer class="">
+
+        <div class="text-center text-light black-fill2">
+
+            Copyright &copy; <?php
+                    echo date("d.m.Y")." " .date("l").",";
+                    ?>
+            Hogward School. All Rights Reserved.
+
+        </div>
+
+
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
+
 
 </html>
