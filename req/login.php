@@ -48,7 +48,8 @@ if($username===$uname){
     $_SESSION['fname']=$fname;
     $_SESSION['role']=$role;
     
-    header("Location: ../home.php?error=$em");
+    // header("Location: ../home.php?error=$em");
+    header("Location: ../admin/index.php");
     exit;
 }else{
     $em="Incorrect Username or Password";
