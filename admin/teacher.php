@@ -2,6 +2,9 @@
 session_start();
 if(isset($_SESSION['admin_id']) && isset($_SESSION['role'])){
     if($_SESSION['role']=='Admin'){
+        include "../DB_connection.php";
+        include "data/teacher.php";
+        $teachers=getAllTeachers($conn);
     ?>
 
 <!DOCTYPE html>
@@ -11,7 +14,7 @@ if(isset($_SESSION['admin_id']) && isset($_SESSION['role'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Hogwart</title>
+    <title>Admin | Teachers</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="../logo.png">
@@ -23,53 +26,53 @@ if(isset($_SESSION['admin_id']) && isset($_SESSION['role'])){
 
     <?php
 include "../admin/inc/navbar.php";
+if($teachers !=0){
+
 ?>
     <div class="container mt-5">
-        <div class="container text-center">
-            <div class="row row-cols-5">
-                <a href="teacher.php" class="col btn btn-dark m-2 py-3">
-                    <i class="fa fa-user-md fs-1" aria-hidden="true"></i><br>
-                    Teachers
-                </a>
-                <a href="" class="col btn btn-dark m-2 py-3">
-                    <i class="fa fa-graduation-cap fs-1" aria-hidden="true"></i><br>
-                    Students
-                </a>
-                <a href="" class="col btn btn-dark m-2 py-3">
-                    <i class="fa fa-pencil-square fs-1" aria-hidden="true"></i><br>
-                    Register Office
-                </a>
-                <a href="" class="col btn btn-dark m-2 py-3">
-                    <i class="fa fa-cubes fs-1" aria-hidden="true"></i><br>
-                    Class
-                </a>
-                <a href="" class="col btn btn-dark m-2 py-3">
-                    <i class="fa fa-columns fs-1" aria-hidden="true"></i><br>
-                    Section
-                </a>
-                <a href="" class="col btn btn-dark m-2 py-3">
-                    <i class="fa fa-calendar fs-1" aria-hidden="true"></i><br>
-                    Schedule
-                </a>
-                <a href="" class="col btn btn-dark m-2 py-3">
-                    <i class="fa fa-book fs-1" aria-hidden="true"></i><br>
-                    Course
-                </a>
-                <a href="" class="col btn btn-dark m-2 py-3">
-                    <i class="fa fa-envelope fs-1" aria-hidden="true"></i><br>
-                    Message
-                </a>
-                <a href="" class="col btn btn-primary m-2 py-3 col-5">
-                    <i class="fa fa-cogs fs-1" aria-hidden="true"></i><br>
-                    Settings
-                </a>
-                <a href="../logout.php" class="col btn btn-warning m-2 py-3 col-5">
-                    <i class="fa fa-sign-out fs-1" aria-hidden="true"></i><br>
-                    Logout
-                </a>
-            </div>
+        <a href="" class="btn btn-dark">Add New Teacher</a>
+        <div class="table-responsive">
+            <table class="table table-bordered mt-3 n-table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Grade</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($teachers as $teacher){?>
+
+
+                    <tr>
+                        <th scope="row">1</th>
+                        <td><?=$teacher['teacher_id']?></td>
+                        <td><?=$teacher['fname']?></td>
+                        <td><?=$teacher['lname']?></td>
+                        <td><?=$teacher['teacher_id']?></td>
+                        <td><?=$teacher['teacher_id']?></td>
+                        <td><?=$teacher['teacher_id']?></td>
+                        <td>
+                            <a href="" class="btn btn-warning">Edit</a>
+                            <a href="" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    <?php }?>
+                </tbody>
+            </table>
         </div>
+        <?php }else{ ?>
+        <div class="alert alert-info .w-450 m-5" role="alert">
+            Empty!
+        </div>
+        <?php } ?>
     </div>
+
 
     <!-- <div class="d-flex justify-content-center align-items-center vh-100">
         <div class="shadow w-450 p-3 text-center bg-light">
@@ -98,12 +101,12 @@ include "../admin/inc/navbar.php";
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
     $(document).ready(function() {
-        $("#navLinks li:nth-child(1) a").addClass('active');
+        $("#navLinks li:nth-child(2) a").addClass('active');
     });
     </script>
 </body>
 
-<footer class="">
+<!-- <footer class="">
 
     <div class="text-center text-light black-fill2">
 
@@ -115,7 +118,7 @@ include "../admin/inc/navbar.php";
     </div>
 
 
-</footer>
+</footer> -->
 
 </html>
 <?php

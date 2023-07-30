@@ -89,3 +89,8 @@ textarea {
 .w-450 {
   width: 450px;
 }
+
+/* add teachers table */
+.n-table {
+  max-width: 800px;
+}
