@@ -33,7 +33,7 @@ if($teachers !=0){
 
 ?>
     <div class="container mt-5">
-        <a href="" class="btn btn-dark">Add New Teacher</a>
+        <a href="teacher-add.php" class="btn btn-dark">Add New Teacher</a>
         <div class="table-responsive">
             <table class="table table-bordered mt-3 n-table">
                 <thead>
