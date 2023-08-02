@@ -6,6 +6,17 @@ if(isset($_SESSION['admin_id']) && isset($_SESSION['role'])){
         include "data/subject.php";
         include "data/grade.php";
         $subjects=getAllSubjects($conn);
+        $grades=getAllGrades($conn);
+
+
+        $fname='';
+        $lname='';
+        $uname='';
+
+        if (isset($_GET['fname'])) $fname = $_GET['fname'];
+       if (isset($_GET['lname'])) $lname = $_GET['lname'];
+       if (isset($_GET['uname'])) $uname = $_GET['uname'];
+
     ?>
 
 <!DOCTYPE html>
@@ -32,23 +43,39 @@ include "../admin/inc/navbar.php";
     <div class="container mt-5">
         <a href="teacher.php" class="btn btn-dark">Go Back</a>
 
-        <form class="shadow p-3 mt-5 form-w" method="post" action="">
-            <h5>Add New User</h5>
+        <form class="shadow p-3 mt-5 form-w" method="post" action="req/teacher-add.php">
+            <h5>Add New Teacher</h5>
             <hr>
+
+            <?php
+                if (isset($_GET['error'])){?>
+
+            <div class="alert alert-danger" role="alert">
+                <?=$_GET['error'] ?>
+            </div>
+            <?php }?>
+            <?php
+                if (isset($_GET['success'])){?>
+
+            <div class="alert alert-success" role="alert">
+                <?=$_GET['success'] ?>
+            </div>
+            <?php }?>
+
 
             <div class="mb-3">
                 <label class="form-label">First name</label>
-                <input type="text" class="form-control" name="fname">
+                <input type="text" class="form-control" value="<?=$fname?>" name="fname">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Last name</label>
-                <input type="text" class="form-control" name="lname">
+                <input type="text" class="form-control" value="<?=$lname?>" name="lname">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Username</label>
-                <input type="text" class="form-control" name="Username">
+                <input type="text" class="form-control" value="<?=$uname?>" name="username">
             </div>
 
             <div class="mb-3">
@@ -64,10 +91,10 @@ include "../admin/inc/navbar.php";
             <div class="mb-3">
                 <label class="form-label">Subject</label>
                 <div class="row row-cols-5">
-                    <?php foreach ($subjects as $subjects): ?>
+                    <?php foreach ($subjects as $subject): ?>
                     <div class="col">
-                        <input type="checkbox" name="subject">
-                        English
+                        <input type="checkbox" name="subjects[]" value=" <?=$subject['subject_id']?>">
+                        <?=$subject['subject']?>
                     </div>
                     <?php endforeach ?>
                 </div>
@@ -75,7 +102,14 @@ include "../admin/inc/navbar.php";
 
             <div class="mb-3">
                 <label class="form-label">Grade</label>
-                <input type="text" class="form-control" name="grade">
+                <div class="row row-cols-5">
+                    <?php foreach ($grades as $grade): ?>
+                    <div class="col">
+                        <input type="checkbox" name="grades[]" value=" <?=$grade['grade_id']?>">
+                        <?=$grade['grade_code']?>-<?=$grade['grade']?>
+                    </div>
+                    <?php endforeach ?>
+                </div>
             </div>
 
             <button type="submit" class="btn btn-primary">Add</button>

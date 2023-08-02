@@ -1,4 +1,19 @@
 <?php
+
+// All Grades
+function getAllGrades($conn){
+    $sql="SELECT * FROM grades";
+    $stmt=$conn->prepare($sql);
+    $stmt->execute();
+
+    if($stmt->rowCount()>=1){
+        $grades=$stmt->fetchAll();
+        return $grades;
+    }else{
+        return 0;
+    }
+}
+
 // Get Grade By ID
 function getGradeById($grade_id,$conn){
     $sql="SELECT * FROM grades WHERE grade_id=?";
