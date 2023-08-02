@@ -3,11 +3,9 @@ session_start();
 if(isset($_SESSION['admin_id']) && isset($_SESSION['role'])){
     if($_SESSION['role']=='Admin'){
         include "../DB_connection.php";
-        include "data/teacher.php";
         include "data/subject.php";
         include "data/grade.php";
-        $teachers=getAllTeachers($conn);
-        // $subjects=getAllSubjects($conn);
+        $subjects=getAllSubjects($conn);
     ?>
 
 <!DOCTYPE html>
@@ -65,7 +63,14 @@ include "../admin/inc/navbar.php";
 
             <div class="mb-3">
                 <label class="form-label">Subject</label>
-                <input type="text" class="form-control" name="subject">
+                <div class="row row-cols-5">
+                    <?php foreach ($subjects as $subjects): ?>
+                    <div class="col">
+                        <input type="checkbox" name="subject">
+                        English
+                    </div>
+                    <?php endforeach ?>
+                </div>
             </div>
 
             <div class="mb-3">
